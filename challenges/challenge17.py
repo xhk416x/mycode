@@ -9,4 +9,6 @@ name= input("What is your name?\n")
 
 name= name.capitalize()
 
-print("Hi " + name + "! Welcome to Day " + mylist[1] + " of " + mylist[5] + " Training!")
+#edited to use f-string
+#print("Hi " + name + "! Welcome to Day " + mylist[1] + " of " + mylist[5] + " Training!")
+print(f"Hi {name}! Welcome to Day {mylist[1]} of {mylist[5]} Training!")
