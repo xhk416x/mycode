@@ -7,7 +7,7 @@ def chal13():
     NAME = input("Please tell me your name: ")
     #Saves user input as DOW (day of week)
     DOW = input("Also, what is the day of the week today?")
-    print("Hello, ", NAME, "!", " Happy ", DOW, "!", sep="")
-
+    #print("Hello, ", NAME, "!", " Happy ", DOW, "!", sep="")
+    print(f"Hello, {NAME}! Happy {DOW}!")
 #Calls chal13 function
 chal13()
