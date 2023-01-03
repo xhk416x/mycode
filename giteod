@@ -7,7 +7,7 @@ if [[ $(git status --porcelain) ]]; then
         echo "Changes detected. Updating remote repo."
 #Set git location
         read -r -p "Path to git repo? [Default= ~/mycode ]: " GIT_DIR ##Gets user input
-        GIT_DIR=${GIT_DIR:-~/mycode} ##Set GET_DIR to . IF null or not set already
+        GIT_DIR=${GIT_DIR:-~/mycode} ##Set GET_DIR to ~/mycode IF null or not set already
         echo "$GIT_DIR selected"
 #Add changed files
         git add "$GIT_DIR" > /dev/null
