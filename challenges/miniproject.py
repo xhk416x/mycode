@@ -61,13 +61,17 @@ def main():
     else:
         if answer == "a":
             hs += 1
+            qcount += 1
         elif answer == "b":
             mk += 1
+            qcount += 1
         elif answer == "c":
             e += 1
+            qcount += 1
         elif answer == "d":
             ak += 1
-    qcount += 1
+            qcount += 1
+    
 
 #loop 
 #determine final results
