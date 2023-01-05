@@ -41,48 +41,33 @@ qcount = 0
 def main():
 #ask question
     global qcount
-    global hs
-    global mk
-    global e
-    global ak
 
     print(dictlist[qcount]["question"])
-    print(f"A. {dictlist[qcount]['1']}")
-    print(f"B. {dictlist[qcount]['2']}")
-    print(f"C. {dictlist[qcount]['3']}")
-    print(f"D. {dictlist[qcount]['4']}")
+    print(f"1. {dictlist[qcount]['1']}")
+    print(f"2. {dictlist[qcount]['2']}")
+    print(f"3. {dictlist[qcount]['3']}")
+    print(f"4. {dictlist[qcount]['4']}")
     
-    answer= input(">>> ")
-    answer= answer.lower()
+    answer= input()
+    #answer= int(answer)
     #evaluate answer
-    if answer not in ["a", "b", "c", "d"]:
+    if answer not in ["1","2","3","4"]:
+        pass
         print("Not a valid response. Don't you want to go to Disney World??")
     #add counter
     else:
         if answer == "a":
-            hs += 1
-        elif answer == "b":
-            mk += 1
-        elif answer == "c":
-            e += 1
-        elif answer == "d":
-            ak += 1
-    qcount += 1
+                hs
+        dictlist[qcount][answer -1] += 1
+        qcount += 1
+
+
+
 
 #loop 
 #determine final results
 
 print("Which Disney World park should you go to??")
 while qcount <=3:
-    main()
-
-if mk > ak and mk > e and mk > hs:
-    print("You should go to the Magic Kindgom!")
-elif ak > mk and ak > e and ak > hs:
-    print("You should go to the Animal Kindgom!")
-elif e > mk and e > ak and e > hs:
-    print("You should go to Epcot!")  
-elif hs > mk and hs > e and hs > ak:
-    print("You should go to Hollywood Studios!")
-else:
-    print("It looks like you don't have a clear preference. You should start at Epcot for the great food.")
+  main()
+print(mk, ak, e, hs)
