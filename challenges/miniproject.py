@@ -71,15 +71,12 @@ def main():
         elif answer == "d":
             ak += 1
             qcount += 1
-    
-
-#loop 
-#determine final results
 
 print("Which Disney World park should you go to??")
+#loop
 while qcount <=3:
     main()
-
+#determine final results
 if mk > ak and mk > e and mk > hs:
     print("You should go to the Magic Kindgom!")
 elif ak > mk and ak > e and ak > hs:
