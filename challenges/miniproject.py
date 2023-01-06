@@ -40,11 +40,11 @@ qcount = 0
 
 def main():
 #ask question
-    global qcount
-    global hs
-    global mk
-    global e
-    global ak
+    # global qcount
+    # global hs
+    # global mk
+    # global e
+    # global ak
 
     print(dictlist[qcount]["question"])
     print(f"A. {dictlist[qcount]['1']}")
