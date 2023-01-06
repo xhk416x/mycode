@@ -1,0 +1,4 @@
+lookup.tails.example.org
+search.robotnik.example.org
+dns.knuckles.example.org
+emerald.ring.example.org
