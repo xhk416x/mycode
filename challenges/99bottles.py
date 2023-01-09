@@ -3,7 +3,8 @@
 import time
 
 try:
-    bottles = int(input("How many bottles do you have on your wall? (No more than 100 please)\n"))
+    bottles = input("How many bottles do you have on your wall? (No more than 100 please)\n")
+    bottles = int(bottles)
     if bottles > 100:
         print("Whoa there, you don't have that many bottles on your wall.")
     elif bottles > 0 < 100:
