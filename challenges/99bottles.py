@@ -3,8 +3,7 @@
 import time
 
 try:
-    bottles = input("How many bottles do you have on your wall? (No more than 100 please)\n")
-    bottles = int(bottles)
+    bottles = int(input("How many bottles do you have on your wall? (No more than 100 please)\n"))
     if bottles > 100:
         print("Whoa there, you don't have that many bottles on your wall.")
     elif bottles > 0 < 100:
@@ -18,5 +17,3 @@ try:
             print("Now I'm sad, and probably an alcoholic. No more bottles of beer on the wall.")           
 except:
     print(f"That wasn't a number! I can't count down from {bottles}")
-
-    
