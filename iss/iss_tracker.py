@@ -7,8 +7,8 @@ import time
 import reverse_geocoder
 
 iss_local = "http://api.open-notify.org/iss-now.json"
-iss_gps= (response["iss_position"]["latitude"],response["iss_position"]["longitude"])
 response= requests.get(iss_local).json()
+iss_gps= (response["iss_position"]["latitude"],response["iss_position"]["longitude"])
 
 def main():
     print("CURRENT LOCATION OF THE ISS:")
