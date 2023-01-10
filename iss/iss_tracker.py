@@ -2,7 +2,7 @@
 """script to read the ISS location with timestamp"""
 
 import requests
-import json
+#import json
 import time
 import reverse_geocoder as rg
 
