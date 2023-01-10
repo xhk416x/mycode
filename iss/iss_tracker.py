@@ -4,7 +4,7 @@
 import requests
 import json
 import time
-import reverse_geocoder
+import reverse_geocoder as rg
 
 iss_local = "http://api.open-notify.org/iss-now.json"
 response= requests.get(iss_local).json()
@@ -15,7 +15,7 @@ def main():
     print(time.strftime('%m-%d-%Y %H:%M:%S', time.localtime()))
     print("Long: ", response["iss_position"]["longitude"])
     print("Lat: ", response["iss_position"]["latitude"])
-    print("City, State/Province, Country: ", reverse_geocoder.search(iss_gps)[0]["name"], ", ", reverse_geocoder.search(iss_gps)[0]["admin1"], ", ", reverse_geocoder.search(iss_gps)[0]["cc"], sep="")
+    print("City, State/Province, Country: ", rg.search(iss_gps)[0]["name"], ", ", rg.search(iss_gps)[0]["admin1"], ", ", rg.search(iss_gps)[0]["cc"], sep="")
 
 if __name__ == "__main__":
     main()
