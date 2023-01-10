@@ -15,7 +15,7 @@ def main():
     print(time.strftime('%m-%d-%Y %H:%M:%S', time.localtime()))
     print("Long: ", response["iss_position"]["longitude"])
     print("Lat: ", response["iss_position"]["latitude"])
-    print("City, State/Province, Country: ", rg.search(iss_gps)[0]["name"], ", ", rg.search(iss_gps)[0]["admin1"], ", ", rg.search(iss_gps)[0]["cc"], sep="")
+    print("City, State/Province, Country: ", rg.search(iss_gps, verbose=False)[0]["name"], ", ", rg.search(iss_gps)[0]["admin1"], ", ", rg.search(iss_gps)[0]["cc"], sep="")
 
 if __name__ == "__main__":
     main()
