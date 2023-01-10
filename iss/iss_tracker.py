@@ -6,11 +6,10 @@ import json
 import time
 import reverse_geocoder as rg
 
-iss_local = "http://api.open-notify.org/iss-now.json"
-response= requests.get(iss_local).json()
-iss_gps= (response["iss_position"]["latitude"],response["iss_position"]["longitude"])
-
 def main():
+    iss_local = "http://api.open-notify.org/iss-now.json"
+    response= requests.get(iss_local).json()
+    iss_gps= (response["iss_position"]["latitude"],response["iss_position"]["longitude"])
     print("CURRENT LOCATION OF THE ISS:")
     print(time.strftime('%m-%d-%Y %H:%M:%S', time.localtime()))
     print("Long: ", response["iss_position"]["longitude"])
