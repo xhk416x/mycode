@@ -6,13 +6,15 @@ This script is being designed to provide the following automated tasks:
 - ping check the router (import os)
 - login check the router (import netmiko)
 - determine if interfaces in use are up (import netmiko)
-- Apply new configuration (import netmiko) # not yet built
+- Apply new configuration (import netmiko) # NEW
 
 The IPs and device type should be made available via an Excel spreadsheet
 '''
 
 import os
 import csv
+
+import bootstrapper ## NEW
 
 # python3 -m pip install netmiko
 from netmiko import ConnectHandler
@@ -127,6 +129,28 @@ def main():
                                 "admin",
                                 "alta3")
         print("\n" + result)
+
+    ## Determine if new config should be applied && if so apply new config
+    print("\n***** NEW BOOTSTRAPPING CHECK *****")
+
+    ynchk = input("\nWould you like to apply a new configuration? y/N \n>") or "n"
+
+    if ynchk.lower() in ["y", "yes"]:
+        conf_loc = input("\nEnter name of new config file. \n>")
+        conf_ip = input("\nHostname of the device to be configured? \n>")
+
+        if bootstrapper.bootstrapper(f"{entry[switchip]}",
+                                     switchip,
+                                     "admin",
+                                     "alta3",
+                                     conf_loc):
+
+            # if function returns TRUE            
+            print("\nNew configuration applied!")
+
+        else:
+            # if function returns FALSE (there was an error)
+            print("\nProblem in applying new configuration!")
 
 if __name__ == "__main__":
     main()
