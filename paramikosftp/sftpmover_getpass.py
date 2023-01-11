@@ -28,13 +28,12 @@ def main():
     # ## copy our firstpasswd.py script to bender
     # sftp.put("file_to_move.txt", "file_to_move.txt") # move file to target location home directory
     
-    #try:
-    dir= input("Choose a source for files to be sent")
-    dest= input("Choose a destination for the files")
-    ##move them files
-    movethemfiles(dir, dest, sftp)
-    #except:
-    #    print("Oops, something wasn't right about that.")
+    try:
+        dir= input("Choose a source for files to be sent")
+        dest= input("Choose a destination for the files")
+        movethemfiles(dir, dest, sftp)
+    except:
+        print("Oops, something wasn't right about that.", err)
 
     ## close the connection
     sftp.close() # close the connection
