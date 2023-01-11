@@ -1,0 +1,30 @@
+[planetexpress]
+bender      ansible_host=10.10.2.3 ansible_user=bender ansible_python_interpreter=/usr/bin/python3 fileuser=bender
+fry         ansible_host=10.10.2.4 ansible_user=fry ansible_python_interpreter=/usr/bin/python3 fileuser=fry
+zoidberg    ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3 fileuser=zoidberg
+farnsworth  ansible_host=10.10.2.6 ansible_user=farnsworth ansible_ssh_pass=alta3 fileuser=farnsworth
+
+[research]
+h1    ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3
+h2    ansible_host=10.10.2.4 ansible_user=fry      ansible_python_interpreter=/usr/bin/python3
+
+[raiders]
+indy      ansible_host=10.10.2.2 ansible_user=indy ansible_ssh_pass=alta3
+
+[professors]
+farnsworth  ansible_host=10.10.2.6 ansible_user=farnsworth
+
+[web]
+bender      ansible_host=10.10.2.3 ansible_user=bender ansible_python_interpreter=/usr/bin/python3
+fry         ansible_host=10.10.2.4 ansible_user=fry ansible_python_interpreter=/usr/bin/python3
+
+[switches]
+sw-1
+sw-2
+
+[eosswitches]
+sw-1
+sw-2
+
+[eosswitches:vars]
+ansible_network_os=eos
