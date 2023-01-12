@@ -4,3 +4,4 @@ echo "id_rsa*" >> ~/mycode/.gitignore
 echo "*.log" >> ~/mycode/.gitignore
 echo "*.key" >> ~/mycode/.gitignore
 echo "id_rsa*" >> ~/mycode/.gitignore
+echo "zsh-install/artifacts >> ~/mycode/.gitignore

@@ -1,0 +1,33 @@
+---
+- name: Wes-zsh-install
+  hosts: localhost
+  connection: local
+  vars:
+    theme: "agnoster"
+
+  tasks:
+  - name: "Apt to install zsh"
+    ansible.builtin.apt: # module
+      name: zsh
+      state: present
+    become: true # run as root. keyword for task not module
+
+  - name: "Apt to install fonts-powerline"
+    ansible.builtin.apt:
+      name: fonts-powerline
+      state: present
+    become: true
+
+  - name: "Edit plugins"
+    lineinfile:
+      path: "~/.zshrc"
+      regexp: "^plugins=.*"
+      line: "plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)"
+      backup: true
+
+  - name: "Edit theme"
+    lineinfile:
+      path: "{{ lookup('env', 'HOME') }}/.zshrc"
+      regexp: "^ZSH_THEME=.*"
+      line: 'ZSH_THEME="{{theme}}"'
+      backup: true

@@ -1,0 +1,1 @@
+{"event": "verbose", "uuid": "3897732e-2e84-44f1-8c56-093b1278b4c1", "counter": 1, "stdout": "\u001b[0;31mERROR! the playbook: aptplaybook.yaml could not be found\u001b[0m", "start_line": 0, "end_line": 1, "runner_ident": "bb3ba0c7-dff2-4724-8aa2-fa8ff350ee61", "created": "2023-01-12T21:13:12.753338"}

@@ -1,0 +1,1 @@
+{"event": "verbose", "uuid": "7a1100b4-782f-455e-80da-d4e19d833d85", "counter": 1, "stdout": "\u001b[0;31mERROR! the playbook: debplaybook.yaml could not be found\u001b[0m", "start_line": 0, "end_line": 1, "runner_ident": "207c6557-cf20-4c93-a998-d16029ea5f5a", "created": "2023-01-12T21:24:55.316414"}

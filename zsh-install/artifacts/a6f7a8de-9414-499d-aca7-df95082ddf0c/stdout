@@ -1,0 +1,17 @@
+
+PLAY [Wes-zsh-install] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+[0;32mok: [localhost][0m
+
+TASK [Apt to install zsh] ******************************************************
+[0;32mok: [localhost][0m
+
+TASK [Apt to install fonts-powerline] ******************************************
+[0;32mok: [localhost][0m
+
+TASK [Edit plugins] ************************************************************
+[0;31mfatal: [localhost]: FAILED! => {"changed": false, "msg": "Destination .zshrc does not exist !", "rc": 257}[0m
+
+PLAY RECAP *********************************************************************
+[0;31mlocalhost[0m                  : [0;32mok=3   [0m changed=0    unreachable=0    [0;31mfailed=1   [0m skipped=0    rescued=0    ignored=0   

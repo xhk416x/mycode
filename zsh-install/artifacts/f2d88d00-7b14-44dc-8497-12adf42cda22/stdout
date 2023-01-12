@@ -1,0 +1,6 @@
+
+PLAY [wes-zsh-install] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+[0;32mok: [localhost][0m
+[0;31mERROR! the field 'hosts' is required but was not set[0m
