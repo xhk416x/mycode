@@ -6,16 +6,29 @@ and will include dependency checks and minor customization options
 
 ####gathering modules
 import packagemanager_check as pm_check
-import pip
 import importlib
 #import ansible_runner
 ##download needed non-builtin modules
+importlib.__import__(pip)
+import pip
+
 def import_3rd_party(package):
     try:
         importlib.__import__(package)
         print("Successfully imported", package)
     except ImportError:
         pip.main(['install', package])
+
+
+### MUST run before defining main()
+import_3rd_party(package="ansible_runner")
+try:
+    import ansible_runner
+except:
+    print("Couldn't import ansible_runner. Try running me agian.")
+
+# Needed for packagemanager_check
+import_3rd_party(package="distro")
 
 def is_ansible():
     try:
@@ -27,23 +40,6 @@ def is_ansible():
             os.system(f"sudo {package} install ansible -y")
     except:
         print("Uh oh. Spaghetti-o.")
-
-####add customizations
-#edit .zshrc to include updated ~/bin PATH
-#edit .zshrc to edit default theme
-#edit .zshrc to include custom plugins
-#download selected plugins
-#source .zshrc
-
-### MUST run before defining main()
-import_3rd_party(package="ansible_runner")
-try:
-    import ansible_runner
-except:
-    print("Couldn't import ansible_runner. Try running me agian.")
-
-# Needed for packagemanager_check
-import_3rd_party(package="distro")
 
 def main():
 
@@ -66,6 +62,12 @@ def main():
 
     else:
         print("Sorry, looks like your distro might not be supported.")
+
+####add customizations
+#edit .zshrc to include updated ~/bin PATH
+#edit .zshrc to edit default theme
+#download selected plugins
+#source .zshrc
 
 if __name__ == "__main__":
     main()
