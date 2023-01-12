@@ -10,19 +10,22 @@ and will include dependency checks and minor customization options
 #import subprocess
 import distro
 import ansible_runner as a_run
+import packagemanager_check as pm_check
 
 ####distro data. needs be in a separate file **future
 debian= ["debian", "ubuntu", "mint"]
 rhel= ["rhel", "fedora"]
 
 #check for os 
-def distrocheck():
-    if distro.id() in debian or distro.like() in debian:
-        print("Debian-like detected. Using apt.")
-        return "debian"
-    elif distro.id() in rhel or distro.like() in rhel:
-        print("Sorry, not supported yet")
-        return "rhel"
+# def distrocheck():
+#     if distro.id() in debian or distro.like() in debian:
+#         print("Debian-like detected. Using apt.")
+#         return "debian"
+#     elif distro.id() in rhel or distro.like() in rhel:
+#         print("Sorry, not supported yet")
+#         return "rhel"
+
+
 
 ####install dependencies
 def deb_deps():
@@ -46,8 +49,13 @@ def rhel_deps():
 #source .zshrc
 
 def main():
-    if distrocheck() == debian:
+    if pm_check() == "apt":
         deb_deps()
+    elif pm_check() == "yum":
+        yum_deps()
+    elif pm_check() == "dnf":
+        dnf_deps()
+    
 
 
 if __name__ == "__main__":
