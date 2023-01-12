@@ -37,11 +37,17 @@ def is_ansible():
 
 ### MUST run before defining main()
 import_3rd_party(package="ansible_runner")
-import ansible_runner
+try:
+    import ansible_runner
+except:
+    print("Couldn't import ansible_runner. Try running me agian.")
+
 # Needed for packagemanager_check
 import_3rd_party(package="distro")
 
 def main():
+
+    is_ansible()
 
     pkg_m = pm_check.packagemanager_check()
     playbookpath = f'/home/student/mycode/zsh-install/project/{pkg_m}playbook.yaml'
