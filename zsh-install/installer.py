@@ -17,6 +17,17 @@ def import_3rd_party(package):
     except ImportError:
         pip.main(['install', package])
 
+def is_ansible():
+    try:
+        ansible = os.system("which ansible > /dev/null")
+        if ansible == 0:
+            print("Ansible is already installed yay!")
+        else:
+            package = pm_check()
+            os.system(f"sudo {package} install ansible -y")
+    except:
+        print("Uh oh. Spaghetti-o.")
+
 ####add customizations
 #edit .zshrc to include updated ~/bin PATH
 #edit .zshrc to edit default theme
