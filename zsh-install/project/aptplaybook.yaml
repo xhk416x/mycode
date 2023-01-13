@@ -18,6 +18,14 @@
       state: present
     become: true
 
+  - name: "Install oh-my-zsh"
+    ansible.builtin.shell:
+      cmd: sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && bash ./oh-my-zsh_install.sh --unattended
+
+  - name: "Change default shell"
+    ansible.builtin.shell:
+      cmd: chsh -s /bin/zsh
+
   - name: "Edit plugins"
     lineinfile:
       path: "~/.zshrc"
