@@ -12,6 +12,8 @@ import os
 ## pull in env variables
 HOME = os.getenv('HOME')
 PWD = os.getcwd()
+#### install prereqs
+os.system("sudo apt update && sudo apt install python3-pip ansible -y")
 ## below will download all pip modules in dependencies.txt
 import py_mod_deps
 ## after py_mod_deps installs modules, this will import them  
