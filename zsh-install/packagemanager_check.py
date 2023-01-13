@@ -21,4 +21,4 @@ def packagemanager_check():
         print("Uh oh. Spaghetti-o.")
 
 if __name__ == "__main__":
-    main()
+    packagemanager_check()

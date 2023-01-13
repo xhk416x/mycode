@@ -11,9 +11,9 @@ import pip
 ## below will download all pip modules in dependencies.txt
 import py_mod_deps
 ## after py_mod_deps installs modules, this will import them  
-with open("dependencies.txt", "r") as foo:
+with open("dependencies.txt", "r") as deplist:
     mods = []
-    for line in foo:
+    for line in deplist:
         modname= line.strip("\n")
         mods.append(modname)
         modname= py_mod_deps.import_with_auto_install(modname)
@@ -32,20 +32,13 @@ def is_ansible():
         print("Uh oh. Spaghetti-o.")
 
 def main():
-
+    supported_pkgm = ["apt", "yum", "dnf"]
     is_ansible()
     pkg_m = pm_check.packagemanager_check()
+    #### arg it up here vvvv
     playbookpath = f'/home/student/mycode/zsh-install/project/{pkg_m}playbook.yaml'
 
-    if pkg_m == "apt":
-        r= ansible_runner.run(playbook=playbookpath, private_data_dir=".")
-        print("{}: {}".format(r.status, r.rc))
-
-    elif pkg_m == "yum":
-        r= ansible_runner.run(playbook=playbookpath, private_data_dir=".")
-        print("{}: {}".format(r.status, r.rc))
-
-    elif pkg_m == "dnf":
+    if pkg_m in supported_pkgm:
         r= ansible_runner.run(playbook=playbookpath, private_data_dir=".")
         print("{}: {}".format(r.status, r.rc))
 
