@@ -15,7 +15,7 @@ PWD = os.system('pwd')
 ## below will download all pip modules in dependencies.txt
 import py_mod_deps
 ## after py_mod_deps installs modules, this will import them  
-with open(f"{HOME}/dependencies.txt", "r") as deplist:
+with open(f"{PWD}/dependencies.txt", "r") as deplist:
     mods = []
     for line in deplist:
         modname= line.strip("\n")
