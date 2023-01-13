@@ -21,13 +21,15 @@ def import_with_auto_install(package):
     #         globals()[mod] = importlib.import_module(mod)
 
 
-if __name__ == '__main__':
-    with open("dependencies.txt", "r") as foo:
-        mods = []
-        for line in foo:
-            modname= line.strip("\n")
-            mods.append(modname)
-            modname= import_with_auto_install(modname)
-        print(mods)
-        for mod in mods:
-            globals()[mod] = importlib.import_module(mod)
+# import os
+# HOME = os.getenv('HOME')
+# if __name__ == '__main__':
+#     with open("dependencies.txt", "r") as foo:
+#         mods = []
+#         for line in foo:
+#             modname= line.strip("\n")
+#             mods.append(modname)
+#             modname= import_with_auto_install(modname)
+#         print(mods)
+#         for mod in mods:
+#             globals()[mod] = importlib.import_module(mod)
