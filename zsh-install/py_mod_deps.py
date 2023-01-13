@@ -3,6 +3,7 @@
 
 import importlib
 import os
+import pip
 
 # def install_file(package: str):
 #     subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", package], shell=False)
