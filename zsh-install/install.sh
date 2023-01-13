@@ -6,4 +6,6 @@ sleep 1.5
 
 echo -e '\n**************************************************\n'
 
+sleep 1.5
+
 python3 installer.py

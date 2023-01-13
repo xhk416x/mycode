@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   vars:
-    theme: "agnoster"
+    theme: "agnoster" ## make definable later
 
   tasks:
   - name: "Apt to install zsh"

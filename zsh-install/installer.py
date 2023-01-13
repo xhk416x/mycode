@@ -11,7 +11,7 @@ import pip
 import os
 ## pull in env variables
 HOME = os.getenv('HOME')
-PWD = os.system('pwd')
+PWD = os.getcwd()
 ## below will download all pip modules in dependencies.txt
 import py_mod_deps
 ## after py_mod_deps installs modules, this will import them  
@@ -24,20 +24,20 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
     for mod in mods:
         globals()[mod] = py_mod_deps.importlib.import_module(mod)
 
-def is_ansible():
-    try:
-        ansible = os.system("which ansible > /dev/null")
-        if ansible == 0:
-            print("Ansible is already installed yay!")
-        else:
-            package = pm_check()
-            os.system(f"sudo {package} install ansible -y")
-    except:
-        print("Uh oh. Spaghetti-o.")
+# def is_ansible():
+#     try:
+#         ansible = os.system("which ansible > /dev/null")
+#         if ansible == 0:
+#             print("Ansible is already installed yay!")
+#         else:
+#             package = pm_check()
+#             os.system(f"sudo {package} install ansible -y")
+#     except:
+#         print("Uh oh. Spaghetti-o.")
 
 def main():
     supported_pkgm = ["apt", "yum", "dnf"]
-    is_ansible()
+    #is_ansible()
     pkg_m = pm_check.packagemanager_check()
     #### arg it up here vvvv
     playbookpath = f'{PWD}/project/{pkg_m}playbook.yaml'
