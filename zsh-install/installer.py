@@ -22,7 +22,12 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
         mods.append(modname)
         modname= py_mod_deps.import_with_auto_install(modname)
     for mod in mods:
-        globals()[mod] = py_mod_deps.importlib.import_module(mod)
+        globals()[mod] = importlib.import_module(mod)
+
+# def dynamic_import():
+#     with open(f"{PWD}/dependencies.txt", "r") as deplist:
+#         mods = []
+
 
 # def is_ansible():
 #     try:
@@ -36,6 +41,7 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
 #         print("Uh oh. Spaghetti-o.")
 
 def main():
+
     supported_pkgm = ["apt", "yum", "dnf"]
     #is_ansible()
     pkg_m = pm_check.packagemanager_check()
