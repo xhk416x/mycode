@@ -16,16 +16,25 @@ os.system("sudo apt update && sudo apt install python3-pip ansible -y")
 ### pip now added
 import pip
 ## below will download all pip modules in dependencies.txt
-import py_mod_deps
+# import py_mod_deps
 ## after py_mod_deps installs modules, this will import them  
-with open(f"{PWD}/dependencies.txt", "r") as deplist:
+with open(f"{PWD}/dependencies.txt", "r") as deplist: 
     mods = []
     for line in deplist:
+        try:
+            importlib.import_module(package)
+            print("try")
+        except ImportError:
+            pip.main(['install', package])
+            print("except")
+        finally:
+            print("ending pre-importlib")
+            importlib.import_module(package)
         modname= line.strip("\n")
         mods.append(modname)
-        py_mod_deps.import_with_auto_install(modname)
-    # for mod in mods:
-    #     globals()[mod] = importlib.import_module(mod)
+        # py_mod_deps.import_with_auto_install(modname)
+    for mod in mods:
+        globals()[mod] = importlib.import_module(mod)
 
 def main():
 
