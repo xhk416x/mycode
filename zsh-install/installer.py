@@ -18,15 +18,6 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
     for line in deplist:
         modname= line.strip("\n")
         mods.append(modname)
-        # try:
-        #     importlib.import_module(modname)
-        #     print("try")
-        # except ImportError:
-        #     pip.main(['install', modname])
-        #     print("except")
-        # finally:
-        #     print("ending pre-importlib")
-        #     importlib.import_module(modname)
     for mod in mods:
         globals()[mod] = importlib.import_module(mod)
 
@@ -44,15 +35,12 @@ def main():
             output_fd=sys.stdout,
             error_fd=sys.stderr,
         )
-        print("rc: {}".format(rc))
-        print("out: {}".format(out))
-        print("err: {}".format(err))
+
     else:
         print("Sorry, looks like your distro might not be supported.")
 
 ####add customizations
 #edit .zshrc to include updated ~/bin PATH
-#edit .zshrc to edit default theme
 #download selected plugins
 #source .zshrc
 

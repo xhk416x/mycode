@@ -1,24 +1,15 @@
 # #!/usr/bin/env python3
-# """This script installs 3rd party pip modules"""
+# """This script installs 3rd party pip modules from a file called 'dependencies.txt' """
 
 import importlib
 import os
 import pip
 
-# def install_file(package: str):
-#     subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", package], shell=False)
-
 def import_with_auto_install(package):
     try:
         return importlib.import_module(package)
-        print("try")
     except ImportError:
         pip.main(['install', package])
-        # print("******************pre-install***************")
-        # install_file(package)
-        # print("******************post-install***************")
-    print("pre-return")
-    # return importlib.import_module(package)
 
 if __name__ == '__main__':
     os.system("sudo apt update && sudo apt install python3-pip ansible -y")
@@ -28,5 +19,3 @@ if __name__ == '__main__':
             modname= line.strip("\n")
             mods.append(modname)
             import_with_auto_install(modname)
-        # for mod in mods:
-        #     globals()[mod] = importlib.import_module(mod)
