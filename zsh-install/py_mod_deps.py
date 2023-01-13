@@ -1,23 +1,21 @@
 # #!/usr/bin/env python3
 # """This script installs 3rd party pip modules"""
 
-# import pip
 import importlib
-# import subprocess
-# import sys
+import os
 
-# def install_file(package: str):
-#     subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", package], shell=False)
+def install_file(package: str):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", package], shell=False)
 
 def import_with_auto_install(package):
     try:
         return importlib.import_module(package)
         print("try")
     except ImportError:
-        pip.main(['install', package])
-        # print("******************pre-install***************")
-        # install_file(package)
-        # print("******************post-install***************")
+        # pip.main(['install', package])
+        print("******************pre-install***************")
+        install_file(package)
+        print("******************post-install***************")
     print("pre-return")
     return importlib.import_module(package)
 
