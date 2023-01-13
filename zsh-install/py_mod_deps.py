@@ -27,3 +27,5 @@ if __name__ == '__main__':
             modname= line.strip("\n")
             mods.append(modname)
             import_with_auto_install(modname)
+        for mod in mods:
+            globals()[mod] = importlib.import_module(mod)

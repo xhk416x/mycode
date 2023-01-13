@@ -17,15 +17,15 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
     for line in deplist:
         modname= line.strip("\n")
         mods.append(modname)
-        try:
-            importlib.import_module(modname)
-            print("try")
-        except ImportError:
-            pip.main(['install', modname])
-            print("except")
-        finally:
-            print("ending pre-importlib")
-            importlib.import_module(modname)
+        # try:
+        #     importlib.import_module(modname)
+        #     print("try")
+        # except ImportError:
+        #     pip.main(['install', modname])
+        #     print("except")
+        # finally:
+        #     print("ending pre-importlib")
+        #     importlib.import_module(modname)
     for mod in mods:
         globals()[mod] = importlib.import_module(mod)
 
