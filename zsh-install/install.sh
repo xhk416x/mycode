@@ -6,4 +6,4 @@ sleep 1.5
 
 echo -e '\n**************************************************\n'
 
-python3 mycode/zsh-install/installer.py
+python3 installer.py
