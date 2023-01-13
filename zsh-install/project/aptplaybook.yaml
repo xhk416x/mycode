@@ -32,12 +32,12 @@
 
   - name: "Downloading zsh plugin autosuggestions"
     ansible.builtin.git:
-      dest: "{{ home }}/.oh-my-zsh/custom/plugins/"
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
       repo: "https://github.com/zsh-users/zsh-autosuggestions"
 
   - name: "Downloading zsh plugin syntax highlighting"
     ansible.builtin.git:
-      dest: "{{ home }}/.oh-my-zsh/custom/plugins/"
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
       repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
 
   - name: "Adding plugins to .zshrc"
