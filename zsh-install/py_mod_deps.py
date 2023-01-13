@@ -22,12 +22,10 @@ def import_with_auto_install(package):
     return importlib.import_module(package)
 
 if __name__ == '__main__':
+    os.system("sudo apt update && sudo apt install python3-pip ansible -y")
     with open("dependencies.txt", "r") as foo:
         mods = []
         for line in foo:
             modname= line.strip("\n")
             mods.append(modname)
-            modname= import_with_auto_install(modname)
-        print(mods)
-        for mod in mods:
-            globals()[mod] = importlib.import_module(mod)
+            import_with_auto_install(modname)

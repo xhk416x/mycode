@@ -11,13 +11,7 @@ import os
 ## pull in env variables
 HOME = os.getenv('HOME')
 PWD = os.getcwd()
-#### install prereqs
-os.system("sudo apt update && sudo apt install python3-pip ansible -y")
-### pip now added
 import pip
-## below will download all pip modules in dependencies.txt
-# import py_mod_deps
-## after py_mod_deps installs modules, this will import them  
 with open(f"{PWD}/dependencies.txt", "r") as deplist: 
     mods = []
     for line in deplist:
@@ -32,14 +26,11 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
         finally:
             print("ending pre-importlib")
             importlib.import_module(modname)
-        # py_mod_deps.import_with_auto_install(modname)
     for mod in mods:
         globals()[mod] = importlib.import_module(mod)
 
 def main():
-
     supported_pkgm = ["apt", "yum", "dnf"]
-    #is_ansible()
     pkg_m = pm_check.packagemanager_check()
     #### arg it up here vvvv
     playbookpath = f'{PWD}/project/{pkg_m}playbook.yaml'
