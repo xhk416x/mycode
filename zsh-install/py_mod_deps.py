@@ -4,8 +4,8 @@
 import importlib
 import os
 
-def install_file(package: str):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", package], shell=False)
+# def install_file(package: str):
+#     subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", package], shell=False)
 
 def import_with_auto_install(package):
     try:
@@ -17,7 +17,7 @@ def import_with_auto_install(package):
         # install_file(package)
         # print("******************post-install***************")
     print("pre-return")
-    return importlib.import_module(package)
+    # return importlib.import_module(package)
 
 if __name__ == '__main__':
     os.system("sudo apt update && sudo apt install python3-pip ansible -y")
