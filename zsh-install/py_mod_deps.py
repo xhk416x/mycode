@@ -3,6 +3,8 @@
 
 # import pip
 import importlib
+import subprocess
+
 def install_file(package: str):
     subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "--no-index", "--find-links", "whlFolder", package], shell=True)
 def import_with_auto_install(package):
