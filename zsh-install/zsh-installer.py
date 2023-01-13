@@ -24,7 +24,6 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
 def main():
     supported_pkgm = ["apt", "yum", "dnf"]
     pkg_m = pm_check.packagemanager_check()
-    #### arg it up here vvvv
     playbookpath = f'{PWD}/project/{pkg_m}playbook.yaml'
 
     if pkg_m in supported_pkgm:
@@ -35,9 +34,10 @@ def main():
             output_fd=sys.stdout,
             error_fd=sys.stderr,
         )
-
     else:
         print("Sorry, looks like your distro might not be supported.")
+    
+    print("Please log out and back in to see the effect!")
 
 ####add customizations
 #edit .zshrc to include updated ~/bin PATH
