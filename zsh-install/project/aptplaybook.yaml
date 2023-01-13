@@ -25,7 +25,7 @@
     ansible.builtin.script: ./oh-my-zsh_install.sh --unattended
 
   - name: "Change default shell"
-    ansible.builtin.raw: chsh -s /bin/zsh
+    ansible.builtin.raw: usermod -s /bin/zsh {{ lookup('env', 'USER') }}
 
   - name: "Edit plugins"
     lineinfile:
