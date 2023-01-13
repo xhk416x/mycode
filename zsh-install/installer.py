@@ -23,7 +23,7 @@ with open(f"{PWD}/dependencies.txt", "r") as deplist:
     for line in deplist:
         modname= line.strip("\n")
         mods.append(modname)
-        modname= py_mod_deps.import_with_auto_install(modname)
+        py_mod_deps.import_with_auto_install(modname)
     for mod in mods:
         importlib.import_module(mod)
         globals()[mod] = importlib.import_module(mod)
