@@ -7,9 +7,12 @@ import importlib
 def import_with_auto_install(package):
     try:
         return importlib.import_module(package)
+        print("try")
     except ImportError:
         pip.main(['install', package])
         importlib.invalidate_caches()
+        print("except")
+    print("pre-return")
     return importlib.import_module(package)
     
     # with open("dependencies.txt", "r") as foo:
