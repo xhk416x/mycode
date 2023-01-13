@@ -42,9 +42,6 @@ def main():
         out, err, rc = ansible_runner.run_command(
             executable_cmd='ansible-playbook',
             cmdline_args=[playbookpath, '--ask-become-pass'],
-            input_fd=sys.stdin,
-            output_fd=sys.stdout,
-            error_fd=sys.stderr,
             host_cwd=PWD,
         )
 
