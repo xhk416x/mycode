@@ -4,31 +4,21 @@ and will include dependency checks and minor customization options
 || Wes Pritchard
 """
 
-####gathering modules
+#### gathering modules
 import packagemanager_check as pm_check
 import importlib
-#import ansible_runner
-##download needed non-builtin modules
-importlib.__import__(pip)
 import pip
-
-def import_3rd_party(package):
-    try:
-        importlib.__import__(package)
-        print("Successfully imported", package)
-    except ImportError:
-        pip.main(['install', package])
-
-
-### MUST run before defining main()
-import_3rd_party(package="ansible_runner")
-try:
-    import ansible_runner
-except:
-    print("Couldn't import ansible_runner. Try running me agian.")
-
-# Needed for packagemanager_check
-import_3rd_party(package="distro")
+## below will download all pip modules in dependencies.txt
+import py_mod_deps
+## after py_mod_deps installs modules, this will import them  
+with open("dependencies.txt", "r") as foo:
+    mods = []
+    for line in foo:
+        modname= line.strip("\n")
+        mods.append(modname)
+        modname= py_mod_deps.import_with_auto_install(modname)
+    for mod in mods:
+        globals()[mod] = py_mod_deps.importlib.import_module(mod)
 
 def is_ansible():
     try:
@@ -44,7 +34,6 @@ def is_ansible():
 def main():
 
     is_ansible()
-
     pkg_m = pm_check.packagemanager_check()
     playbookpath = f'/home/student/mycode/zsh-install/project/{pkg_m}playbook.yaml'
 

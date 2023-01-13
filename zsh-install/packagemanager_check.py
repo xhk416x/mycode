@@ -2,7 +2,6 @@
 """check for dnf or apt"""
 
 import os
-import distro
 
 def packagemanager_check():
     try:
