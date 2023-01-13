@@ -5,6 +5,7 @@
   vars:
     theme: "agnoster" ## make definable later
     user: "{{ lookup('env', 'USER') }}"
+    home: "{{ lookup('env', 'HOME') }}"
   
   tasks:
   - name: "Apt to install zsh"
@@ -26,19 +27,29 @@
     ansible.builtin.script: ./oh-my-zsh_install.sh --unattended
 
   - name: "Change default shell"
-    ansible.builtin.raw: usermod -s /bin/zsh {{user}}
+    ansible.builtin.raw: usermod -s /bin/zsh {{ user }}
     become: true
 
-  - name: "Edit plugins"
+  - name: "Downloading zsh plugin autosuggestions"
+    ansible.builtin.git:
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins/"
+      repo: "https://github.com/zsh-users/zsh-autosuggestions"
+
+  - name: "Downloading zsh plugin syntax highlighting"
+    ansible.builtin.git:
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins/"
+      repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
+
+  - name: "Adding plugins to .zshrc"
     lineinfile:
       path: "~/.zshrc"
       regexp: "^plugins=.*"
       line: "plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)"
       backup: true
 
-  - name: "Edit theme"
+  - name: "Editing theme in .zshrc"
     lineinfile:
-      path: "{{ lookup('env', 'HOME') }}/.zshrc"
+      path: "{{ home }}/.zshrc"
       regexp: "^ZSH_THEME=.*"
-      line: 'ZSH_THEME="{{theme}}"'
+      line: 'ZSH_THEME="{{ theme }}"'
       backup: true
