@@ -8,6 +8,7 @@ and will include dependency checks and minor customization options
 import packagemanager_check as pm_check
 import importlib
 import os
+import sys
 ## pull in env variables
 HOME = os.getenv('HOME')
 PWD = os.getcwd()
@@ -36,13 +37,16 @@ def main():
     playbookpath = f'{PWD}/project/{pkg_m}playbook.yaml'
 
     if pkg_m in supported_pkgm:
-        r= ansible_runner.run(playbook=playbookpath, private_data_dir=".")
-        print("{}: {}".format(r.status, r.rc))
-        # ansible_runner.run_command(
-        #     executable_cmd='ansible-playbook',
-        #     cmdline_args=[playbookpath, '--ask-become-pass'],
-        #     host_cwd=PWD,
-        # )
+        out, err, rc = ansible_runner.run_command(
+            executable_cmd='ansible-playbook',
+            cmdline_args=[playbookpath, '-K'],
+            input_fd=sys.stdin,
+            output_fd=sys.stdout,
+            error_fd=sys.stderr,
+        )
+        print("rc: {}".format(rc))
+        print("out: {}".format(out))
+        print("err: {}".format(err))
     else:
         print("Sorry, looks like your distro might not be supported.")
 
