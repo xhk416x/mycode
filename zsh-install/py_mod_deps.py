@@ -12,10 +12,10 @@ def import_with_auto_install(package):
         return importlib.import_module(package)
         print("try")
     except ImportError:
-        # pip.main(['install', package])
-        print("******************pre-install***************")
-        install_file(package)
-        print("******************post-install***************")
+        pip.main(['install', package])
+        # print("******************pre-install***************")
+        # install_file(package)
+        # print("******************post-install***************")
     print("pre-return")
     return importlib.import_module(package)
 
