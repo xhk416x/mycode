@@ -4,7 +4,8 @@
   connection: local
   vars:
     theme: "agnoster" ## make definable later
-
+    user: "{{ lookup('env', 'USER') }}"
+  
   tasks:
   - name: "Apt to install zsh"
     ansible.builtin.apt: # module
@@ -25,7 +26,8 @@
     ansible.builtin.script: ./oh-my-zsh_install.sh --unattended
 
   - name: "Change default shell"
-    ansible.builtin.raw: usermod -s /bin/zsh {{ lookup('env', 'USER') }}
+    ansible.builtin.raw: usermod -s /bin/zsh {{user}}
+    become: true
 
   - name: "Edit plugins"
     lineinfile:
