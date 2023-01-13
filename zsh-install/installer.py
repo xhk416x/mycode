@@ -45,9 +45,6 @@ def main():
             error_fd=sys.stderr,
             host_cwd=PWD,
         )
-        print("rc: {}".format(rc))
-        print("out: {}".format(out))
-        print("err: {}".format(err))
 
         # r= ansible_runner.run(playbook=playbookpath, private_data_dir=".")
         # print("{}: {}".format(r.status, r.rc))
